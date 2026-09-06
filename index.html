@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parnikaa — Something Beautiful Is Coming</title>
+  <meta name="description" content="Parnikaa — clothing for beautiful beginnings. Something beautiful is coming.">
+  <meta name="theme-color" content="#f8eee9">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600&family=Parisienne&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #fbf2ed;
+      --cream-2: #f7e8e1;
+      --rose: #bd7774;
+      --rose-dark: #6f3939;
+      --ink: #342727;
+      --line: rgba(111,57,57,.16);
+      --white: rgba(255,255,255,.74);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: "DM Sans", sans-serif;
+    }
+    .page { overflow: hidden; }
+    header {
+      position: absolute;
+      inset: 0 0 auto 0;
+      z-index: 5;
+      padding: 28px 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      text-decoration: none;
+      color: var(--ink);
+    }
+    .mark {
+      width: 35px;
+      height: 35px;
+      border: 1.5px solid var(--rose);
+      border-radius: 50% 50% 45% 45%;
+      position: relative;
+      transform: rotate(-12deg);
+    }
+    .mark:before, .mark:after {
+      content: "";
+      position: absolute;
+      width: 10px;
+      height: 16px;
+      border: 1.5px solid var(--rose);
+      border-radius: 100% 0 100% 0;
+      top: 6px;
+    }
+    .mark:before { left: 6px; transform: rotate(-20deg); }
+    .mark:after { right: 5px; transform: rotate(38deg); }
+    .brand-name {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 28px;
+      letter-spacing: .12em;
+      font-weight: 600;
+    }
+    nav {
+      display: flex;
+      gap: 28px;
+      font-size: 11px;
+      letter-spacing: .19em;
+      text-transform: uppercase;
+    }
+    nav a { color: var(--ink); text-decoration: none; opacity: .78; }
+    nav a:hover { color: var(--rose-dark); opacity: 1; }
+
+    .hero {
+      min-height: 760px;
+      display: grid;
+      grid-template-columns: 48% 52%;
+      background:
+        radial-gradient(circle at 26% 28%, rgba(255,255,255,.9), transparent 34%),
+        linear-gradient(110deg, #fbf3ee 0%, #f8ebe5 48%, #f2ddd5 100%);
+    }
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+      padding: 155px 8vw 80px 9vw;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: .27em;
+      text-transform: uppercase;
+      color: var(--rose-dark);
+      margin-bottom: 25px;
+      font-weight: 600;
+    }
+    h1 {
+      margin: 0;
+      max-width: 650px;
+      font-family: "Parisienne", cursive;
+      font-weight: 400;
+      font-size: clamp(62px, 6.2vw, 100px);
+      line-height: .88;
+      color: var(--rose-dark);
+    }
+    h1 span {
+      display: block;
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      font-size: .63em;
+      line-height: 1.05;
+      color: var(--ink);
+      margin-left: 25%;
+      margin-top: 12px;
+    }
+    .intro {
+      max-width: 500px;
+      margin: 30px 0 30px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 23px;
+      line-height: 1.35;
+    }
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      min-width: 245px;
+      padding: 17px 31px;
+      background: var(--rose);
+      color: white;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: .28em;
+      font-size: 12px;
+      transition: transform .2s ease, background .2s ease;
+    }
+    .cta:hover { transform: translateY(-2px); background: var(--rose-dark); }
+    .signup { margin-top: 28px; max-width: 500px; }
+    .signup label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .form-row {
+      display: flex;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.55);
+      min-height: 54px;
+    }
+    .form-row input {
+      min-width: 0;
+      flex: 1;
+      border: 0;
+      background: transparent;
+      padding: 0 16px;
+      font: inherit;
+      outline: none;
+    }
+    .form-row button {
+      width: 58px;
+      border: 0;
+      background: var(--rose);
+      color: white;
+      font-size: 22px;
+      cursor: pointer;
+    }
+    .form-note {
+      font-size: 11px;
+      line-height: 1.5;
+      opacity: .66;
+      margin-top: 9px;
+    }
+    .form-message {
+      display: none;
+      margin-top: 9px;
+      font-size: 12px;
+      color: var(--rose-dark);
+      font-weight: 600;
+    }
+
+    .hero-art {
+      min-height: 760px;
+      position: relative;
+      background-image: url("parnikaa-hero.jpg");
+      background-size: cover;
+      background-position: center 32%;
+    }
+    .hero-art:after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(248,235,229,.32), transparent 24%);
+      pointer-events: none;
+    }
+
+    .values {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      background: #fff6f2;
+      border-top: 1px solid rgba(111,57,57,.08);
+      border-bottom: 1px solid rgba(111,57,57,.08);
+    }
+    .value {
+      padding: 28px 18px;
+      text-align: center;
+      border-right: 1px solid var(--line);
+    }
+    .value:last-child { border-right: 0; }
+    .icon { color: var(--rose); font-size: 27px; height: 35px; }
+    .value strong {
+      display: block;
+      margin-top: 6px;
+      font-size: 12px;
+      line-height: 1.45;
+      font-weight: 500;
+    }
+
+    .quote {
+      min-height: 190px;
+      display: grid;
+      place-items: center;
+      padding: 50px 25px;
+      text-align: center;
+      background:
+        linear-gradient(rgba(250,238,232,.86), rgba(250,238,232,.86)),
+        repeating-linear-gradient(0deg, #e6d5cd 0, #e6d5cd 2px, #f4e7e0 2px, #f4e7e0 6px);
+    }
+    .quote p {
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      font-size: 27px;
+    }
+    .quote .heart { color: var(--rose); font-size: 22px; margin-top: 12px; }
+
+    footer {
+      padding: 25px 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      background: #fbf0eb;
+      font-size: 11px;
+      letter-spacing: .04em;
+    }
+    .footer-brand {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 22px;
+      letter-spacing: .1em;
+    }
+    .footer-note { text-align: right; opacity: .65; }
+
+    @media (max-width: 900px) {
+      header { padding: 20px 6vw; }
+      nav { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-copy {
+        min-height: 600px;
+        padding: 125px 8vw 60px;
+      }
+      .hero-art { min-height: 560px; background-position: center; }
+      .values { grid-template-columns: repeat(2, 1fr); }
+      .value:nth-child(2) { border-right: 0; }
+      .value:nth-child(3), .value:nth-child(4), .value:nth-child(5) { border-top: 1px solid var(--line); }
+      .value:nth-child(4) { border-right: 0; }
+    }
+    @media (max-width: 560px) {
+      .brand-name { font-size: 24px; }
+      .hero-copy { min-height: 570px; padding-left: 7vw; padding-right: 7vw; }
+      h1 { font-size: 62px; }
+      h1 span { margin-left: 14%; font-size: .62em; }
+      .intro { font-size: 20px; }
+      .cta { width: 100%; }
+      .hero-art { min-height: 480px; }
+      .values { grid-template-columns: 1fr 1fr; }
+      .value { padding: 22px 10px; }
+      footer { flex-direction: column; align-items: flex-start; }
+      .footer-note { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <a class="brand" href="#">
+      <span class="mark" aria-hidden="true"></span>
+      <span class="brand-name">PARNIKAA</span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="#story">Our story</a>
+      <a href="#values">Little moments</a>
+      <a href="#launch">Coming soon</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="launch">
+      <div class="hero-copy">
+        <div class="eyebrow">Clothing for beautiful beginnings</div>
+        <h1>Something beautiful <span>is coming.</span></h1>
+        <p class="intro" id="story">
+          A clothing brand inspired by a little girl who made our world a little more beautiful.
+        </p>
+        <a class="cta" href="#notify">Coming soon</a>
+
+        <form class="signup" id="notify">
+          <label for="email">Stay in the loop</label>
+          <div class="form-row">
+            <input id="email" type="email" placeholder="Enter your email address" aria-label="Email address" required>
+            <button type="submit" aria-label="Submit email">→</button>
+          </div>
+          <div class="form-note">Be the first to know when Parnikaa launches.</div>
+          <div class="form-message" id="formMessage">Thank you — we'll see you at the launch. ♡</div>
+        </form>
+      </div>
+
+      <div class="hero-art" role="img" aria-label="A child wearing a floral dress and holding a plush bunny"></div>
+    </section>
+
+    <section class="values" id="values" aria-label="Parnikaa values">
+      <div class="value"><div class="icon">⌁</div><strong>Thoughtfully<br>Curated</strong></div>
+      <div class="value"><div class="icon">✿</div><strong>Soft &amp; Comfortable<br>Fabrics</strong></div>
+      <div class="value"><div class="icon">♡</div><strong>Everyday<br>Styles</strong></div>
+      <div class="value"><div class="icon">☆</div><strong>For Little<br>Dreamers</strong></div>
+      <div class="value"><div class="icon">❀</div><strong>Made<br>for India</strong></div>
+    </section>
+
+    <section class="quote">
+      <div>
+        <p>“Because every chapter deserves beautiful clothes.”</p>
+        <div class="heart">♡</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>
+      <div class="footer-brand">PARNIKAA</div>
+      <div>© 2026 Parnikaa. All rights reserved.</div>
+    </div>
+    <div class="footer-note">Made with love. For every little moment. ♡</div>
+  </footer>
+</div>
+
+<script>
+  // Temporary front-end interaction. Connect this form to an email service when the launch list is ready.
+  document.getElementById("notify").addEventListener("submit", function(e) {
+    e.preventDefault();
+    document.getElementById("formMessage").style.display = "block";
+    this.querySelector("button").disabled = true;
+    this.querySelector("button").style.opacity = ".65";
+  });
+</script>
+</body>
+</html>
